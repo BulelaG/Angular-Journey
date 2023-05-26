@@ -1,8 +1,40 @@
 <h2>My Heroes</h2>
+
+<div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName />
+
+  <label for="real_name">Hero real name: </label>
+  <input id="real_name" #realName />
+
+  <label for="age">Hero age: </label>
+  <input id="age" #age />
+
+  <label for="super_powers">Superpowers: </label>
+  <input id="super_powers" #superPowers />
+
+  <label for="power_origins">Power Origins: </label>
+  <input id="power_origins" #powerOrigins />
+
+  <label for="weakness">Hero weakness: </label>
+  <input id="weakness" #weakness />
+
+  <label for="new-hero">Hero Nationality: </label>
+  <input id="nationality" #nationality />
+
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(heroName.value, realName.value, age.value, superPowers.value, powerOrigins.value, weakness.value, nationality.value ); heroName.value=''">
+    Add hero
+  </button>
+</div>
+
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
     <a routerLink="/detail/{{hero.id}}">
       <span class="badge">{{hero.id}}</span> {{hero.hero_name}}
     </a>
+    <button type="button" class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
   </li>
 </ul>
