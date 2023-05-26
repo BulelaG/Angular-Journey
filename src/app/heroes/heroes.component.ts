@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -12,7 +13,7 @@ import { HeroService } from '../hero.service';
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
   
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService,  private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getHeroes();
@@ -45,10 +46,11 @@ export class HeroesComponent implements OnInit {
 
      
   }
-  delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero.id).subscribe();
-  }
+  delete( ): void {
+    const id = this.route.snapshot.paramMap.get('id')
+    this.heroService.deleteHero(id).subscribe(hero => {
+      console.log(hero);
+  });
 
 
 
