@@ -46,13 +46,18 @@ export class HeroesComponent implements OnInit {
 
      
   }
-  delete( ): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.heroService.deleteHero(id).subscribe(hero => {
-      console.log(hero);
-  });
 
+  delete(hero: Hero): void {
+    this.heroService.deleteHero(hero.id).subscribe(() => {
+      this.heroes = this.heroes.filter(h => h !== hero);
+      console.log(`Deleted hero with ID: ${hero.id}`);
+    });
+  }
 
-
- }
-  
+//   delete(_id:number ): void {
+//     const id = this.route.snapshot.paramMap.get('id')
+//     this.heroService.deleteHero(id).subscribe(hero => {
+//       console.log(hero);
+//   });
+//  }
+} 

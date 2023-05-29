@@ -45,7 +45,7 @@ export class HeroService {
   }
 
   /** GET hero by id. Will 404 if id not found */
-  getHero(id: number): Observable<Hero> {
+  getHero(id: any): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
@@ -88,8 +88,11 @@ export class HeroService {
   }
 
   /** PUT: update the hero on the server */
-  updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+  updateHero(hero: any): Observable<any> {
+
+    const url = `${this.heroesUrl}/${hero.id}`; // Update the URL with the hero's ID
+
+    return this.http.put(url, hero, this.httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );

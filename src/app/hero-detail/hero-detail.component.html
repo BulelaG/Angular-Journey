@@ -1,10 +1,54 @@
 <div *ngIf="hero">
-  <h2>{{hero.hero_name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
+  <h2 class="text-white">{{hero.hero_name | uppercase}} Details</h2> 
+<div class="deets1">
   <div>
     <label for="hero-name">Hero name: </label>
     <input id="hero-name" [(ngModel)]="hero.hero_name" placeholder="Hero name"/>
   </div>
+
+   <div> 
+    <label for="real-name">Real name: </label>
+    <input id="real-name" [(ngModel)]="hero.real_name" placeholder="Hero real name"/>
+  </div>
+
+  <div>
+    <label for="Superpowers">Superpowers: </label>
+    <input id="Superpowers" [(ngModel)]="hero.super_powers" placeholder="Superpowers"/>
+  </div>
+
+   <div> 
+    <label for="Age">Age: </label>
+    <input id="Age" [(ngModel)]="hero.age" placeholder="Age"/>
+  </div>
+
+</div>
+
+
+<div class="deets2">
+  <div>
+    <label for="Weakness">Weakness: </label>
+    <input id="Weakness" [(ngModel)]="hero.weakness" placeholder="Weakness"/>
+  </div>
+
+   <div> 
+    <label for="Power-Origins">Power Origins: </label>
+    <input id="Power-Origins" [(ngModel)]="hero.power_origins" placeholder="Power-Origins"/>
+  </div>
+
+  <div>
+    <label for="Nationality">Nationality: </label>
+    <input id="Nationality" [(ngModel)]="hero.nationality" placeholder="Nationality"/>
+  </div>
+
+   <div> 
+    <label for="Power-Origins">Power Origins: </label>
+    <input id="Power-Origins" [(ngModel)]="hero.power_origins" placeholder="Power-Origins"/>
+  </div>
+</div>
+
+<div>
   <button type="button" (click)="goBack()">go back</button>
   <button type="button" (click)="save()">save</button>
+</div>
+
 </div>
